@@ -333,31 +333,31 @@
 
   // Check other views of other plugins before this plugin
   // e.g. PhoneGap-Plugin-ListPicker, etc
-  UIView *subview;
-  NSArray *subviews = [self.webView.superview subviews];
-  CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
-  CGPoint subviewPoint = CGPointMake(browserClickPoint.x, browserClickPoint.y - statusBarFrame.size.height);
-  for (int i = ((int)[subviews count] - 1); i >= 0; i--) {
-    subview = [subviews objectAtIndex: i];
-    //NSLog(@"--->subview[%d] = %@", i, subview);
-    // we only want to check against other views
-    if (subview == self.pluginScrollView) {
-      continue;
-    }
+//  UIView *subview;
+//  NSArray *subviews = [self.webView.superview subviews];
+//  CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+//  CGPoint subviewPoint = CGPointMake(browserClickPoint.x, browserClickPoint.y - statusBarFrame.size.height);
+//   for (int i = ((int)[subviews count] - 1); i >= 0; i--) {
+//     subview = [subviews objectAtIndex: i];
+//     //NSLog(@"--->subview[%d] = %@", i, subview);
+//     // we only want to check against other views
+//     if (subview == self.pluginScrollView) {
+//       continue;
+//     }
 
-    if (subview.isHidden || !subview.isUserInteractionEnabled) {
-      continue;
-    }
+//     if (subview.isHidden || !subview.isUserInteractionEnabled) {
+//       continue;
+//     }
 
-    UIView *hit = [subview hitTest:subviewPoint withEvent:event];
+//     UIView *hit = [subview hitTest:subviewPoint withEvent:event];
 
-    if (hit) {
-      if (subview == self.webView) {
-        break;
-      }
-      return hit;
-    }
-  }
+//     if (hit) {
+//       if (subview == self.webView) {
+//         break;
+//       }
+//       return hit;
+//     }
+//   }
   if (self.pluginScrollView.mapCtrls == nil || self.pluginScrollView.mapCtrls.count == 0) {
     // Assumes all touches for the browser
     //NSLog(@"--->browser!");
